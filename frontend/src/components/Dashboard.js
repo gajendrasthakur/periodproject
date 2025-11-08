@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { apiGet, apiPost, BASE_URL } from '../api';
 import { format } from 'date-fns';
 import { Toaster, toast } from 'react-hot-toast';
@@ -12,13 +12,8 @@ export default function Dashboard({ token }) {
   const [err, setErr] = useState('');
   const [editModal, setEditModal] = useState(null);
 
-  // Fetch all cycles when token exists
-  useEffect(() => {
-    if (!token) return setLoading(false);
-    fetchCycles();
-  }, [token]);
-
-  async function fetchCycles() {
+  // ✅ useCallback fixes the missing dependency warning
+  const fetchCycles = useCallback(async () => {
     setLoading(true);
     const res = await apiGet('/api/cycles', token);
     if (res.error) {
@@ -28,7 +23,12 @@ export default function Dashboard({ token }) {
     }
     setCycles(res.cycles || []);
     setLoading(false);
-  }
+  }, [token]);
+
+  useEffect(() => {
+    if (!token) return setLoading(false);
+    fetchCycles();
+  }, [token, fetchCycles]); // ✅ fixed dependency list
 
   // Add a new cycle
   async function addCycle(e) {
