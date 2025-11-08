@@ -1,0 +1,18 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fbfbfb; color:#222; }
+.container { max-width: 900px; margin: 24px auto; padding: 16px; }
+header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; }
+header h1 { margin:0; font-size:20px; }
+nav a { margin-right: 12px; text-decoration:none; color:#0077cc; }
+nav button { margin-left: 12px; }
+.card { background:white; padding:12px; border-radius:6px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom:12px; }
+.form { display:flex; flex-direction:column; gap:8px; max-width:420px; }
+.form label { display:flex; flex-direction:column; font-size:14px; }
+.form-inline { display:flex; gap:8px; align-items:end; }
+.form-inline label { display:flex; flex-direction:column; }
+input, button { padding:8px; border-radius:4px; border:1px solid #ddd; }
+button { cursor:pointer; background:#0077cc; color:white; border:0; }
+table { width:100%; border-collapse: collapse; }
+th, td { padding:8px; border-bottom:1px solid #eee; text-align:left; }
+.error { color: #9b2c2c; background: #ffecec; padding:6px; border-radius:4px; }
+.success { color: #1d6b1d; background: #e6ffea; padding:6px; border-radius:4px; }
+footer { margin-top: 18px; font-size:12px; color:#666; }
